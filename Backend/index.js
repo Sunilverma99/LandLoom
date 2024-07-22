@@ -1,40 +1,40 @@
 import express from "express";
 import mongoose from "mongoose";
-import dotenv from "dotenv";
-import cors from "cors";
-import bodyParser from "body-parser";
-
-dotenv.config();
+import cookieParser from "cookie-parser";
+import userRoutes from "./routes/user.route.js"; // Adjust the path as necessary
+// import { upload } from "./middleware/multer.middleware.js"; // Adjust the path as necessary
+import "dotenv/config"; // Load environment variables from .env file
 
 const app = express();
-app.use(
-  cors({
-    origin: process.env.CORS_ORIGIN,
-    credentials: true,
-  })
-);
 
-// Middleware
-app.use(bodyParser.json());
+// Middleware to parse JSON bodies
 app.use(express.json());
+
+// Middleware to parse URL-encoded bodies (for form submissions)
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public"));
+
+// Middleware to parse cookies
+app.use(cookieParser());
 
 // Connect to MongoDB
 mongoose
-  .connect(process.env.MONGO_URI, {})
-  .then(() => {
-    console.log("Connected to MongoDB!!");
-  })
-  .catch((err) => {
-    console.error("Failed to connect to MongoDB", err);
-  });
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.error("MongoDB connection error:", err));
 
 // Routes
+app.use("/api/v1/users", userRoutes);
 
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(err.status || 500).json({
+    message: err.message || "Internal Server Error",
+  });
+});
 
-// Start server
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 5000;
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
