@@ -37,19 +37,19 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new ApiError(409, "User already exists. Please Login instead!!");
   }
 
-  // Taking avatar
-  const avatarLocalPath = req.files?.avatar?.[0]?.path;
+  //   // Taking avatar
+  //   const avatarLocalPath = req.files?.avatar?.[0]?.path;
 
-  if (!avatarLocalPath) {
-    throw new ApiError(400, "Avatar is required");
-  }
+  //   if (!avatarLocalPath) {
+  //     throw new ApiError(400, "Avatar is required");
+  //   }
 
-  // Upload to cloudinary
-  const avatar = await uploadOnCloudinary(avatarLocalPath);
+  //   // Upload to cloudinary
+  //   const avatar = await uploadOnCloudinary(avatarLocalPath);
 
-  if (!avatar) {
-    throw new ApiError(500, "Error uploading avatar");
-  }
+  //   if (!avatar) {
+  //     throw new ApiError(500, "Error uploading avatar");
+  //   }
 
   // Add details in db
   const user = await User.create({
@@ -57,7 +57,7 @@ const registerUser = asyncHandler(async (req, res) => {
     email,
     password,
     fullName,
-    avatar: avatar.url || "",
+    // avatar: avatar.url || "",
   });
 
   // Check if the user is created in db
