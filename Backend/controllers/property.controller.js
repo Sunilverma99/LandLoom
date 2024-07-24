@@ -2,6 +2,8 @@ import ListedProperty from "../models/listedproperty.model..js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "./../utils/ApiError.js";
 
+import GovernmentPropertyDataset from "../models/govermentPropertyDataset.model.js";
+import { ApiResponse } from "../utils/ApiResponse.js";
 const propertyRegister=asyncHandler(async(req,res)=>{
     const {nftURL,description,rate,images,pincode}=req.body;
     if(!nftURL || !description || !rate || !images || !pincode){
@@ -9,11 +11,14 @@ const propertyRegister=asyncHandler(async(req,res)=>{
     }
 
     // nft verication code has to be done
-    const isNFTverified=app.post(" ",nftURL);
+    const propertyFind = await GovernmentPropertyDataset.findOne({ propertyNFT: nftURL });
+
+    if(!propertyFind) throw new ApiError(400,"This property doesn't belong to you");
+  
 
 
     // nft verification
-    if(!isNFTverified) throw new ApiError(400,"This property doesn't belong to you");
+    if(propertyFind.propertyLocationPincode!=pincode) throw new ApiError(400,"This property doesn't belong to you");
     const newProperty=await ListedProperty.create({
         nftURL,
         description,
@@ -29,7 +34,7 @@ const propertyRegister=asyncHandler(async(req,res)=>{
     
       // Send response
       res
-        .status(201)
+        .status(200)
         .json(
           new ApiResponse(200, checkCreatedProperty, "Your Property Listed Successfully!!")
         );
