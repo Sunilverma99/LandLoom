@@ -24,5 +24,5 @@ const listedPropertySchema=new Schema({
     }
 });
 
-const ListedProperty = mongoose.model("GovermentPropertyDataset",listedPropertySchema);
+const ListedProperty = mongoose.model("ListedProperty",listedPropertySchema);
 export default ListedProperty;  
