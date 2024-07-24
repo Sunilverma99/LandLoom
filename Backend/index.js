@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import userRoutes from "./routes/user.route.js"; // Adjust the path as necessary
+import userPropertyRoutes from "./routes/property.route.js";
 // import { upload } from "./middleware/multer.middleware.js"; // Adjust the path as necessary
 import "dotenv/config"; // Load environment variables from .env file
 
@@ -24,6 +25,7 @@ mongoose
 
 // Routes
 app.use("/api/v1/users", userRoutes);
+app.use("/api/v1/property",userPropertyRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

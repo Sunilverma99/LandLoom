@@ -42,18 +42,16 @@ const propertySchema = new Schema({
     //     type:String,
     //     required:true,
     // },
-    propertyPhotos:{
-        type:Array,
-        required:true,
-    },
-    propertyDocuments:{
-        type:Array,
+    
+    propertyNFT:{
+        type:String,
         required:true,
     },
     propertyWaterAndElectrityConnection:{
       type:Boolean,
       default:true,
-    }
+    },
+
 },
 {
     timestamps: true,
