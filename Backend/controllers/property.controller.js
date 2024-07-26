@@ -41,4 +41,28 @@ const propertyRegister=asyncHandler(async(req,res)=>{
 
 });
 
-export {propertyRegister};
+const propertyUpdate=asyncHandler(async(req,res)=>{
+    if(!nftURL ){
+        throw new ApiError(500, "Your Property NFT Url is compulsory");
+    }
+    const {nftURL,description,rate,images,pincode}=req.body;
+    const updatedProperty=await ListedProperty.findOneAndUpdate({nftURL},{
+        description,
+        rate,
+        images,
+        pincode
+    },{new:true});
+    res
+    .status(200)
+    .json(
+      new ApiResponse(200, updatedProperty, "Your property details have been updated!")
+    );
+});
+
+const propertyDelete=asyncHandler(async(req,res)=>{
+    const  nftURL=req.params.id;
+    await ListedProperty.findOneAndDelete({nftURL});
+    res.status(200).json("Property Deleted Successfully");
+})
+
+export {propertyRegister,propertyUpdate,propertyDelete};
