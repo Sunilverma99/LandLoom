@@ -23,7 +23,7 @@ function Card({ item }) {
           <img src="/pin.png" alt="Location" className="w-5 h-5" />
           <span>{item.address}</span>
         </p>
-        <p className="text-xl w-full text-center font-semibold bg-yellow-100 text-yellow-600 dark:bg-yellow-200 dark:text-yellow-700 p-2 rounded-lg mb-4">
+        <p className="text-xl w-full text-center font-semibold bg-gradient-to-r from-blue-400 to-purple-400 text-white p-2 rounded-lg mb-4">
           ${item.price}
         </p>
         <div className="flex gap-4">
