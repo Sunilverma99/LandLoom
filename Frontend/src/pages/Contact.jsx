@@ -113,7 +113,7 @@ const Contact = () => {
               </div>
             </div>
             <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
-              <div className="relative rounded-lg bg-gradient-to-r from-indigo-400 via-blue-400 to-pink-400 p-8 shadow-lg dark:bg-dark-2 sm:p-12">
+              <div className="relative rounded-lg bg-gradient-to-r from-indigo-500 via-blue-500 to-pink-600 p-8 shadow-lg dark:bg-dark-2 sm:p-12">
                 <form>
                   <ContactInputBox
                     type="text"
@@ -139,7 +139,7 @@ const Contact = () => {
                   <div>
                     <button
                       type="submit"
-                      className="w-full rounded border border-primary bg-gradient-to-r from-indigo-400 via-blue-400 to-pink-400 p-3 text-black transition hover:bg-opacity-90"
+                      className="w-full rounded border border-primary bg-gradient-to-r from-indigo-500 via-blue-500 to-pink-600 p-3 text-black transition hover:bg-opacity-90"
                     >
                       Send Message
                     </button>

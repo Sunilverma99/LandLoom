@@ -1,11 +1,11 @@
 import React from "react";
-import loginImage from "../../public/Login.jpg"; // Path to your image
+import loginImage from "../../public/Login.jpg";
 
 const Login = () => {
   return (
     <div className="flex flex-col md:flex-row items-center justify-center my-24 mt-35 px-4 space-y-8 md:space-y-0 md:space-x-8">
       {/* Form Section */}
-      <div className="md:w-1/2 max-w-md mx-auto p-8 border border-gray-300 rounded-lg shadow-xl bg-gradient-to-r from-blue-200 via-purple-300 to-pink-500 dark:from-blue-500 dark:via-indigo-600 dark:to-pink-600">
+      <div className="md:w-1/2 max-w-md mx-auto p-8 border border-gray-300 rounded-lg shadow-xl bg-gradient-to-r from-blue-200 via-purple-300 to-pink-500 dark:from-blue-500 dark:via-indigo-500 dark:to-pink-600">
         <h2 className="text-3xl font-bold mb-6 text-white">Sign In</h2>
         <form>
           <div className="mb-6">
@@ -40,7 +40,7 @@ const Login = () => {
           </div>
           <button
             type="submit"
-            className="w-full py-3 px-6 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-md shadow-lg hover:from-blue-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out"
+            className="w-full py-3 px-6 bg-gradient-to-r from-blue-600 via-indigo-00 to-pink-600 text-white font-semibold rounded-md shadow-lg hover:from-blue-500 hover:to-purple-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out"
           >
             Sign In
           </button>
