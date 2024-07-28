@@ -8,7 +8,7 @@ export const listData = [
     bedroom: 2,
     bathroom: 1,
     price: 1000,
-    address: "456 Park Avenue, London",
+    address: "456 Park Avenue, New Delhi",
     latitude: 51.5074,
     longitude: -0.1278,
   },

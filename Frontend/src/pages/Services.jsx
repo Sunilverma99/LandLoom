@@ -2,10 +2,10 @@ import React from "react";
 
 const Services = () => {
   return (
-    <section className="w-full mx-auto py-10 bg-gray-50 dark:bg-gray-900 dark:text-white">
-      <div className="w-fit pb-1 px-2 mx-auto rounded-md text-xl text-indigo-400 font-semibold text-center ">
+    <section className="w-full mx-auto py-10 bg-gradient-to-r from-blue-500 to-purple-400 text-gray-500">
+      {/* <div className="w-fit pb-1 px-2 mx-auto rounded-md text-xl text-indigo-600 font-semibold text-center ">
         Services
-      </div>
+      </div> */}
 
       <div className="xl:w-[80%] sm:w-[85%] xs:w-[90%] mx-auto flex md:flex-row xs:flex-col lg:gap-4 xs:gap-2 justify-center lg:items-stretch md:items-center mt-4">
         <div className="lg:w-[50%] xs:w-full">
@@ -15,7 +15,7 @@ const Services = () => {
             alt="billboard image"
           />
         </div>
-        <div className="lg:w-[50%] sm:w-full xs:w-full bg-gray-100 dark:bg-gray-900 dark:text-gray-400 md:p-4 xs:p-0 rounded-md">
+        <div className="lg:w-[50%] sm:w-full xs:w-full bg-gray-600 text-gray-200 md:p-4 xs:p-0 rounded-md">
           <h2 className="text-3xl font-semibold text-gray-900 dark:text-white">
             Lorem ipsum dolor sit amet consectetur
           </h2>
@@ -38,7 +38,7 @@ const Services = () => {
             alt="billboard image"
           />
         </div>
-        <div className="lg:w-[50%] xs:w-full bg-gray-100 dark:bg-gray-900 dark:text-gray-400 md:p-4 xs:p-0 rounded-md">
+        <div className="lg:w-[50%] xs:w-full bg-gray-600  text-gray-200 md:p-4 xs:p-0 rounded-md">
           <h2 className="text-3xl font-semibold text-gray-900 dark:text-white">
             Lorem ipsum dolor sit amet consectetur
           </h2>

@@ -13,7 +13,7 @@ const Login = () => {
               htmlFor="email"
               className="block text-sm font-semibold text-gray-200"
             >
-              Email
+              Email or Username
             </label>
             <input
               type="email"
