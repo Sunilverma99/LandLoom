@@ -40,7 +40,7 @@ const Navbar = () => {
             alt="Logo"
           /> */}
           <span className="self-center text-2xl font-semibold text-white dark:text-white">
-            LandLoom
+            <img src="./LandLoomLogo.png" className="rounded-lg h-10" alt="" />
           </span>
         </a>
         <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse relative">
