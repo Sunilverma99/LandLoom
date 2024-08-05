@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import About from "./pages/About";
 import Hero from "./pages/Hero";
 import Login from "./pages/Login";
@@ -8,11 +8,14 @@ import SignUp from "./pages/SignUp";
 import ListPage from "./pages/ListPage";
 import UserProperty from "./pages/UserProperty";
 import Contact from "./pages/Contact";
-import  { Toaster } from 'react-hot-toast';
+import Navbar from "./components/Navbar"; // Ensure the correct path
+import Footer from "./components/Footer"; // Ensure the correct path
+import { Toaster } from 'react-hot-toast';
+
 function App() {
   return (
     <>
-      
+      <Navbar />
       <Routes>
         <Route
           exact
@@ -33,7 +36,8 @@ function App() {
         <Route exact path="/list" element={<ListPage />} />
         <Route exact path="/contact" element={<Contact />} />
       </Routes>
-      <Toaster/>
+      <Footer />
+      <Toaster />
     </>
   );
 }

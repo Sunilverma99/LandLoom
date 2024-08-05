@@ -3,13 +3,15 @@ import { useState } from "react";
 import loginImage from "../../public/Login.jpg";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { setUser } from '../../redux/user/userSlice.js';
+import {useDispatch } from 'react-redux'
 
 const Login = () => {
   const [emailUsername, setEmailUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -40,6 +42,8 @@ const Login = () => {
       const data = await response.json();
       if (response.ok) {
         toast.success('User logged in successfully');
+        console.log(data.data.user);
+        dispatch(setUser(data.data.user));
         navigate('/');
       } else {
         throw new Error(data.message || 'Login failed');
