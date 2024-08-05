@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import userRoutes from "./routes/user.route.js"; // Adjust the path as necessary
@@ -9,9 +10,10 @@ import "dotenv/config"; // Load environment variables from .env file
 
 const app = express();
 
+
 // Middleware to parse JSON bodies
 app.use(express.json());
-
+app.use(cors());
 // Middleware to parse URL-encoded bodies (for form submissions)
 app.use(express.urlencoded({ extended: true }));
 

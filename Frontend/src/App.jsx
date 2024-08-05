@@ -8,10 +8,11 @@ import SignUp from "./pages/SignUp";
 import ListPage from "./pages/ListPage";
 import UserProperty from "./pages/UserProperty";
 import Contact from "./pages/Contact";
-
+import  { Toaster } from 'react-hot-toast';
 function App() {
   return (
     <>
+      
       <Routes>
         <Route
           exact
@@ -32,6 +33,7 @@ function App() {
         <Route exact path="/list" element={<ListPage />} />
         <Route exact path="/contact" element={<Contact />} />
       </Routes>
+      <Toaster/>
     </>
   );
 }
