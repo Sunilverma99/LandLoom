@@ -1,13 +1,22 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import { useSelector,useDispatch } from "react-redux";
+import { set } from "mongoose";
 const Navbar = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isNavbarOpen, setNavbarOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track login status
   const navigate = useNavigate();
   const dropdownRef = useRef(null);
+  const user = useSelector((state) => state.user.currentUser);
+  const dispatch = useDispatch();
+    useEffect(() => {
 
+      if (user) {
+        setIsLoggedIn(true);
+        console.log(user)
+      }
+    }, [user]);
   useEffect(() => {
     // Close dropdown if click is outside of it
     const handleClickOutside = (event) => {
@@ -29,6 +38,30 @@ const Navbar = () => {
     // Navigate to login page
     navigate("/signup");
   };
+  const handleSignOut = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/v1/users/logout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json", 
+          "Authorization": `Bearer ${localStorage.getItem("token")}` 
+        },
+      });
+  
+      if (response.ok) {
+        const parseRes = await response.json();
+        localStorage.removeItem("token");
+        setIsLoggedIn(false);
+        dispatch(setUser(null));
+        navigate("/login");
+      } else {
+        console.error("Logout failed:", await response.text());
+      }
+    } catch (error) {
+      console.error("An error occurred during logout:", error);
+    }
+  };
+  
 
   return (
     <nav className="bg-gradient-to-r from-blue-500 to-purple-600 border-b border-gray-200 dark:border-gray-700 relative">
@@ -56,22 +89,22 @@ const Navbar = () => {
                 <span className="sr-only">Open user menu</span>
                 <img
                   className="w-8 h-8 rounded-full"
-                  src="/docs/images/people/profile-picture-3.jpg"
+                  src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
                   alt="user photo"
                 />
               </button>
               {isDropdownOpen && (
                 <div
-                  className="absolute right-0 mt-2 w-48 z-50 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
+                  className="absolute  text-base mt-48 list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
                   id="user-dropdown"
                   ref={dropdownRef}
                 >
-                  <div className="px-4 py-3">
+                  <div className="px-4 py-5">
                     <span className="block text-sm text-gray-900 dark:text-white">
-                      Nitin{" "}
+                     { user.fullName}
                     </span>
                     <span className="block text-sm text-gray-500 truncate dark:text-gray-400">
-                      nitin@gmail.com
+                     {user.email}
                     </span>
                   </div>
                   <ul className="py-2" aria-labelledby="user-menu-button">
@@ -83,24 +116,10 @@ const Navbar = () => {
                         Dashboard
                       </Link>
                     </li>
+                   
                     <li>
                       <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                      >
-                        Settings
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                      >
-                        Earnings
-                      </a>
-                    </li>
-                    <li>
-                      <a
+                      onClick={handleSignOut}
                         href="#"
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                       >
