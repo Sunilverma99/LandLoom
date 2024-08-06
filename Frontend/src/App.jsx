@@ -11,6 +11,7 @@ import Contact from "./pages/Contact";
 import Navbar from "./components/Navbar"; // Ensure the correct path
 import Footer from "./components/Footer"; // Ensure the correct path
 import { Toaster } from 'react-hot-toast';
+import AddUserProperty from "./pages/AddUserProperty";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route exact path="/user-property" element={<UserProperty />} />
         <Route exact path="/list" element={<ListPage />} />
         <Route exact path="/contact" element={<Contact />} />
+        <Route path="/add-property" element={<AddUserProperty/>} />
       </Routes>
       <Footer />
       <Toaster />

@@ -5,8 +5,8 @@ import { ApiError } from "./../utils/ApiError.js";
 import GovernmentPropertyDataset from "../models/govermentPropertyDataset.model.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 const propertyRegister=asyncHandler(async(req,res)=>{
-    const {nftURL,description,rate,images,pincode}=req.body;
-    if(!nftURL || !description || !rate || !images || !pincode){
+    const {nftURL,description,rate,images,pincode,address}=req.body;
+    if(!nftURL || !description || !rate || !images || !pincode || !address){
         throw new ApiError(500, "Some details were not send ! Try again");
     }
 
@@ -24,7 +24,9 @@ const propertyRegister=asyncHandler(async(req,res)=>{
         description,
         rate,
         images,
-        pincode
+        pincode,
+        address
+
     })
 
     const checkCreatedProperty = await ListedProperty.findById(newProperty._id);
@@ -45,12 +47,13 @@ const propertyUpdate=asyncHandler(async(req,res)=>{
     if(!nftURL ){
         throw new ApiError(500, "Your Property NFT Url is compulsory");
     }
-    const {nftURL,description,rate,images,pincode}=req.body;
+    const {nftURL,description,rate,images,pincode,address}=req.body;
     const updatedProperty=await ListedProperty.findOneAndUpdate({nftURL},{
         description,
         rate,
         images,
-        pincode
+        pincode,
+        address
     },{new:true});
     res
     .status(200)
