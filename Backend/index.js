@@ -9,15 +9,9 @@ import govermentPropertyRoutes from "./routes/govermentProperty.route.js"; // Ad
 import "dotenv/config"; 
 
 const app = express();
-const corsOptions = {
-  origin: 'http://localhost:3000', // Adjust to match your frontend URL
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true, // If you need to send cookies or headers
-};
 
 app.use(express.json());
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());

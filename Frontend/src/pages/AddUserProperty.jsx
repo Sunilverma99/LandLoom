@@ -88,18 +88,19 @@ export default function AddUserProperty() {
   const formSubmit = async (e) => {
     e.preventDefault();
     
-    const config = {
-      method: 'POST',
+
+
+    try {
+      setLoading(true);
+      const response = await fetch('http://localhost:3000/api/property/listproperty', {
+        method: 'POST',
+        mode: 'cors',
       headers: {
         'Content-Type': 'application/json',
       },
       credentials: 'include',
       body: JSON.stringify(formData),
-    };
-
-    try {
-      setLoading(true);
-      const response = await fetch('http://localhost:3000/api/property/listproperty', config);
+      });
       const data = await response.json();
       if (data.success === false) {
         setError("There is some problem");
