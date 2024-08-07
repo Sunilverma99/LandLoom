@@ -87,19 +87,18 @@ export default function AddUserProperty() {
 
   const formSubmit = async (e) => {
     e.preventDefault();
-    
-
-
+  
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:3000/api/property/listproperty', {
+      console.log("add property frontend hit--");
+      const response = await fetch('http://localhost:3000/api/v1/property/listproperty', {
         method: 'POST',
         mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      credentials: 'include',
-      body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify(formData),
       });
       const data = await response.json();
       if (data.success === false) {
@@ -115,6 +114,7 @@ export default function AddUserProperty() {
       setLoading(false);
     }
   }
+  
 
   return (
     <div style={{ backgroundColor: '#fad0c4' }}>

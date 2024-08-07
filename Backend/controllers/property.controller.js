@@ -6,7 +6,7 @@ import GovernmentPropertyDataset from "../models/govermentPropertyDataset.model.
 import { ApiResponse } from "../utils/ApiResponse.js";
 
 const propertyRegister = asyncHandler(async (req, res) => {
-  
+  console.log("backend hit");
   const { nftURL, description, rate, imageUrls, pincode, address } = req.body;
   console.log(req.body);
 
