@@ -6,18 +6,20 @@ import userRoutes from "./routes/user.route.js"; // Adjust the path as necessary
 import userPropertyRoutes from "./routes/property.route.js";
 import govermentPropertyRoutes from "./routes/govermentProperty.route.js"; // Adjust the path as necessary
 // import { upload } from "./middleware/multer.middleware.js"; // Adjust the path as necessary
-import "dotenv/config"; // Load environment variables from .env file
+import "dotenv/config"; 
 
 const app = express();
+const corsOptions = {
+  origin: 'http://localhost:3000', // Adjust to match your frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true, // If you need to send cookies or headers
+};
 
-
-// Middleware to parse JSON bodies
 app.use(express.json());
-app.use(cors());
-// Middleware to parse URL-encoded bodies (for form submissions)
+app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
 
-// Middleware to parse cookies
 app.use(cookieParser());
 
 // Connect to MongoDB

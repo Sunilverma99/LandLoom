@@ -27,6 +27,8 @@ const Login = () => {
           headers: {
             'Content-Type': 'application/json',
           },
+          secure: false,
+          cors: true,
           body: JSON.stringify({ email: emailUsername, password }),
         });
       } else {

@@ -99,7 +99,7 @@ export default function AddUserProperty() {
 
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:3000/api/createListing', config);
+      const response = await fetch('http://localhost:3000/api/property/listproperty', config);
       const data = await response.json();
       if (data.success === false) {
         setError("There is some problem");
