@@ -5,9 +5,14 @@ import { ApiError } from "./../utils/ApiError.js";
 import GovernmentPropertyDataset from "../models/govermentPropertyDataset.model.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 
+<<<<<<< HEAD
 const 
 propertyRegister = asyncHandler(async (req, res) => {
   
+=======
+const propertyRegister = asyncHandler(async (req, res) => {
+  console.log("backend hit");
+>>>>>>> cd0a15668b61fa1ce04b5f5e3997b332f9b42042
   const { nftURL, description, rate, imageUrls, pincode, address } = req.body;
   console.log(req.body);
 
