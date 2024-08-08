@@ -5,24 +5,21 @@ import { ApiError } from "./../utils/ApiError.js";
 import GovernmentPropertyDataset from "../models/govermentPropertyDataset.model.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 
-<<<<<<< HEAD
-const 
-propertyRegister = asyncHandler(async (req, res) => {
-  
-=======
-const propertyRegister = asyncHandler(async (req, res) => {
+
+const propertyRegister = asyncHandler(async (req,res) => {
   console.log("backend hit");
->>>>>>> cd0a15668b61fa1ce04b5f5e3997b332f9b42042
-  const { nftURL, description, rate, imageUrls, pincode, address } = req.body;
+  
+
+  const { nftURL, description, rate, imageUrls, pincode, address,userId } = req.body;
   console.log(req.body);
 
-  if (!nftURL || !description || !rate || !imageUrls || !pincode || !address) {
+  if (!nftURL || !description || !rate || !imageUrls || !pincode || !address||!userId) {
       throw new ApiError(400, "Some details were not sent! Try again"); // Changed to 400 for client-side error
   }
 
   // Verify NFT
   const propertyFind = await GovernmentPropertyDataset.findOne({ propertyNFT: nftURL });
-
+console.log(propertyFind);
   // Check if property is found
   if (!propertyFind) {
       throw new ApiError(400, "This property doesn't belong to you");
@@ -40,7 +37,8 @@ const propertyRegister = asyncHandler(async (req, res) => {
       rate,
       imageUrls,
       pincode,
-      address
+      address,
+        userId
   });
 
   // Check if property is created
@@ -84,4 +82,9 @@ const getAllRegisterproperty=asyncHandler(async(req,res)=>{
     res.status(200).json(allProperties);
 
 })
+// const getMyProperties=asyncHandler(async(req,res)=>{
+//     const userRef=req.params.id;
+//     const myProperties=await ListedProperty.find({userRef});
+//     res.status(200).json(myProperties);
+// })
 export {propertyRegister,propertyUpdate,propertyDelete,getAllRegisterproperty};

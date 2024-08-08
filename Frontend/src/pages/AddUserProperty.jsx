@@ -16,8 +16,8 @@ export default function AddUserProperty() {
     description: "",
     rate: 0,
     pincode: 0,
-    userRef: currentUser._id,
     address: "",
+    userId: currentUser._id,
   });
 
   const uploadImages = async (e) => {

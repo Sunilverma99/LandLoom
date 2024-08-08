@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { propertyRegister,propertyUpdate,propertyDelete ,getAllRegisterproperty} from "../controllers/property.controller.js";
-
+import { verifyJWT } from "../middlewares/auth.middleware.js";
 const router = Router();
 
 router.route("/listproperty").post(propertyRegister);

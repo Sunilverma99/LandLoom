@@ -21,8 +21,14 @@ const listedPropertySchema=new Schema({
     pincode:{
         type:Number,
         required:true
-    }
+    },
+    userId:{
+        type:Schema.Types.ObjectId,
+        ref:"User",
+        required:true
+    },
+   
 });
 
 const ListedProperty = mongoose.model("ListedProperty",listedPropertySchema);
-export default ListedProperty;  
+export default ListedProperty;      
