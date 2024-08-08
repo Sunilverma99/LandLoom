@@ -5,7 +5,8 @@ import { ApiError } from "./../utils/ApiError.js";
 import GovernmentPropertyDataset from "../models/govermentPropertyDataset.model.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 
-const propertyRegister = asyncHandler(async (req, res) => {
+const 
+propertyRegister = asyncHandler(async (req, res) => {
   
   const { nftURL, description, rate, imageUrls, pincode, address } = req.body;
   console.log(req.body);
@@ -73,4 +74,9 @@ const propertyDelete=asyncHandler(async(req,res)=>{
     res.status(200).json("Property Deleted Successfully");
 })
 
-export {propertyRegister,propertyUpdate,propertyDelete};
+const getAllRegisterproperty=asyncHandler(async(req,res)=>{
+    const allProperties=await ListedProperty.find();
+    res.status(200).json(allProperties);
+
+})
+export {propertyRegister,propertyUpdate,propertyDelete,getAllRegisterproperty};
